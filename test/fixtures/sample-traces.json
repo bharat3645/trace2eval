@@ -1,0 +1,194 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          { "key": "service.name", "value": { "stringValue": "support-bot" } }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": { "name": "example-genai-sdk", "version": "1.4.0" },
+          "spans": [
+            {
+              "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1",
+              "spanId": "a1a1a1a1a1a1a1a1",
+              "name": "chat gpt-4o-mini",
+              "startTimeUnixNano": "1752600000000000000",
+              "endTimeUnixNano": "1752600000850000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "gpt-4o-mini" } },
+                { "key": "gen_ai.response.model", "value": { "stringValue": "gpt-4o-mini-2024-07-18" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "42" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "31" } },
+                { "key": "gen_ai.prompt", "value": { "stringValue": "[{\"role\":\"system\",\"content\":\"You are a helpful support agent.\"},{\"role\":\"user\",\"content\":\"How do I reset my password?\"}]" } },
+                { "key": "gen_ai.completion", "value": { "stringValue": "[{\"role\":\"assistant\",\"content\":\"Click 'Forgot password' on the sign-in page and follow the email link.\"}]" } }
+              ]
+            },
+            {
+              "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb2",
+              "spanId": "b2b2b2b2b2b2b2b2",
+              "name": "chat gpt-4o-mini",
+              "startTimeUnixNano": "1752600100000000000",
+              "endTimeUnixNano": "1752600100910000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "gpt-4o-mini" } },
+                { "key": "gen_ai.response.model", "value": { "stringValue": "gpt-4o-mini-2024-07-18" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "42" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "29" } },
+                { "key": "gen_ai.prompt", "value": { "stringValue": "[{\"role\":\"system\",\"content\":\"You are a helpful support agent.\"},{\"role\":\"user\",\"content\":\"How do I reset   my password?\"}]" } },
+                { "key": "gen_ai.completion", "value": { "stringValue": "[{\"role\":\"assistant\",\"content\":\"Use the 'Forgot password' link.\"}]" } }
+              ]
+            },
+            {
+              "traceId": "ccccccccccccccccccccccccccccccc3",
+              "spanId": "c3c3c3c3c3c3c3c3",
+              "name": "chat gpt-4o",
+              "startTimeUnixNano": "1752600200000000000",
+              "endTimeUnixNano": "1752600201200000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "gpt-4o" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "180" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "44" } },
+                { "key": "gen_ai.input.messages", "value": { "stringValue": "[{\"role\":\"user\",\"content\":\"My email is alice@example.com and my phone is +1 (415) 555-0134. My card 4111 1111 1111 1111 was charged twice. Our server 203.0.113.9 logs show token sk-abcdef1234567890ABCDEF12 was used.\"}]" } },
+                { "key": "gen_ai.output.messages", "value": { "stringValue": "[{\"role\":\"assistant\",\"content\":\"I've flagged the duplicate charge and sent a confirmation to alice@example.com.\"}]" } }
+              ]
+            },
+            {
+              "traceId": "ddddddddddddddddddddddddddddddd4",
+              "spanId": "d4d4d4d4d4d4d4d4",
+              "name": "chat gpt-4o",
+              "startTimeUnixNano": "1752600300000000000",
+              "endTimeUnixNano": "1752600302500000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "gpt-4o" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "612" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "18" } },
+                { "key": "gen_ai.input.messages", "value": { "stringValue": "[{\"role\":\"user\",\"content\":\"What's the weather in Paris right now?\"}]" } },
+                { "key": "gen_ai.output.messages", "value": { "stringValue": "[{\"role\":\"assistant\",\"content\":\"\",\"tool_calls\":[{\"id\":\"call_1\",\"function\":{\"name\":\"get_weather\",\"arguments\":\"{\\\"city\\\":\\\"Paris\\\"}\"}}]}]" } }
+              ]
+            },
+            {
+              "traceId": "ddddddddddddddddddddddddddddddd4",
+              "spanId": "d5d5d5d5d5d5d5d5",
+              "parentSpanId": "d4d4d4d4d4d4d4d4",
+              "name": "execute_tool get_weather",
+              "startTimeUnixNano": "1752600301000000000",
+              "endTimeUnixNano": "1752600301400000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "execute_tool" } },
+                { "key": "gen_ai.tool.name", "value": { "stringValue": "get_weather" } },
+                { "key": "gen_ai.tool.call.id", "value": { "stringValue": "call_1" } },
+                { "key": "gen_ai.tool.call.arguments", "value": { "stringValue": "{\"city\":\"Paris\"}" } },
+                { "key": "gen_ai.tool.call.result", "value": { "stringValue": "{\"temp_c\":21,\"condition\":\"clear\"}" } }
+              ]
+            },
+            {
+              "traceId": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee5",
+              "spanId": "e6e6e6e6e6e6e6e6",
+              "name": "chat gpt-4o",
+              "startTimeUnixNano": "1752600400000000000",
+              "endTimeUnixNano": "1752600430000000000",
+              "status": { "code": 2, "message": "rate limited" },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "gpt-4o" } },
+                { "key": "gen_ai.prompt", "value": { "stringValue": "[{\"role\":\"user\",\"content\":\"This request hit a rate limit.\"}]" } }
+              ]
+            },
+            {
+              "traceId": "fffffffffffffffffffffffffffffff6",
+              "spanId": "f7f7f7f7f7f7f7f7",
+              "name": "embeddings text-embedding-3-small",
+              "startTimeUnixNano": "1752600500000000000",
+              "endTimeUnixNano": "1752600500120000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "embeddings" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "text-embedding-3-small" } },
+                { "key": "gen_ai.prompt", "value": { "stringValue": "Indexable document chunk about billing policies." } }
+              ]
+            },
+            {
+              "traceId": "1111111111111111111111111111117a",
+              "spanId": "9a9a9a9a9a9a9a9a",
+              "name": "chat claude-sonnet-4-5",
+              "startTimeUnixNano": "1752600600000000000",
+              "endTimeUnixNano": "1752600601700000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "anthropic" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "claude-sonnet-4-5" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "1450" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "220" } },
+                { "key": "gen_ai.prompt.0.role", "value": { "stringValue": "user" } },
+                { "key": "gen_ai.prompt.0.content", "value": { "stringValue": "Summarize the Q2 incident review meeting notes." } },
+                { "key": "gen_ai.completion.0.role", "value": { "stringValue": "assistant" } },
+                { "key": "gen_ai.completion.0.content", "value": { "stringValue": "Three incidents reviewed; root causes were config drift, a stale cache, and an expired cert." } }
+              ]
+            },
+            {
+              "traceId": "2222222222222222222222222222228b",
+              "spanId": "8b8b8b8b8b8b8b8b",
+              "name": "chat gpt-4o",
+              "startTimeUnixNano": "1752600700000000000",
+              "endTimeUnixNano": "1752600700600000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "gen_ai.system", "value": { "stringValue": "openai" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "gpt-4o" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "12" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "3" } }
+              ],
+              "events": [
+                {
+                  "name": "gen_ai.content.prompt",
+                  "timeUnixNano": "1752600700010000000",
+                  "attributes": [
+                    { "key": "gen_ai.prompt", "value": { "stringValue": "[{\"role\":\"user\",\"content\":\"Translate to French: Good morning\"}]" } }
+                  ]
+                },
+                {
+                  "name": "gen_ai.content.completion",
+                  "timeUnixNano": "1752600700580000000",
+                  "attributes": [
+                    { "key": "gen_ai.completion", "value": { "stringValue": "{\"role\":\"assistant\",\"content\":\"Bonjour\"}" } }
+                  ]
+                }
+              ]
+            },
+            {
+              "traceId": "3333333333333333333333333333339c",
+              "spanId": "9c9c9c9c9c9c9c9c",
+              "name": "GET /api/health",
+              "startTimeUnixNano": "1752600800000000000",
+              "endTimeUnixNano": "1752600800005000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "http.request.method", "value": { "stringValue": "GET" } },
+                { "key": "http.response.status_code", "value": { "intValue": "200" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
