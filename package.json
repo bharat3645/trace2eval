@@ -1,0 +1,30 @@
+{
+  "name": "trace2eval",
+  "version": "0.1.0",
+  "description": "Turn production LLM traces (OTel GenAI) into portable JSONL eval datasets — dedupe, PII scrub, coverage map. Zero dependencies, zero network calls.",
+  "type": "module",
+  "bin": {
+    "trace2eval": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "bench": "node bench/bench.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "evals",
+    "llm",
+    "opentelemetry",
+    "otel",
+    "gen-ai",
+    "observability",
+    "eval-dataset",
+    "jsonl",
+    "pii",
+    "ai-agents"
+  ],
+  "author": "Bharat Singh Parihar (https://github.com/bharat3645)",
+  "license": "MIT"
+}
