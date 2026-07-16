@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run test suite
+        run: node --test test/*.test.js
+
+  dogfood:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Convert the sample trace and check the dataset
+        run: |
+          node bin/cli.js test/fixtures/sample-traces.json -o eval.jsonl --coverage coverage.json
+          test "$(wc -l < eval.jsonl)" -eq 5
+          node -e "const fs=require('fs');fs.readFileSync('eval.jsonl','utf8').trim().split('\n').forEach(l=>JSON.parse(l));const c=JSON.parse(fs.readFileSync('coverage.json','utf8'));if(c.totals.cases!==5||c.totals.duplicates_removed!==1)process.exit(1)"
+          grep -q '<EMAIL_1>' eval.jsonl
+          ! grep -q 'alice@example.com' eval.jsonl
+      - name: Benchmark (informational)
+        run: node bench/bench.js 10000
