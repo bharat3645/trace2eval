@@ -11,8 +11,8 @@ Most teams have observability for their LLM apps; far fewer run evals — and th
 ```
 OTel GenAI trace JSON  ──▶  trace2eval  ──▶  eval.jsonl + coverage.json
                                 │
-                                ├─ dedupes repeated prompts (content-hash, whitespace-insensitive)
                                 ├─ scrubs PII & secrets (stable typed placeholders)
+                                ├─ dedupes repeated prompts (content-hash, whitespace-insensitive)
                                 └─ builds a coverage map (models, tools, token buckets, error rates)
 ```
 
@@ -20,14 +20,18 @@ Zero dependencies. Zero network calls. Your traces never leave your machine.
 
 ## Quick start
 
+Try it against the sample OTLP trace committed in this repo — no setup needed, clone and run:
+
 ```console
-$ npx trace2eval traces.json -o eval.jsonl --coverage coverage.json
+$ npx trace2eval test/fixtures/sample-traces.json -o eval.jsonl --coverage coverage.json
 trace2eval v0.1.0 → eval.jsonl
 cases: 5  (from 9 GenAI spans / 10 total; 1 duplicate removed, 1 incomplete, 1 errored skipped)
 scrubbed: 6 PII/secret values in 1 case (API_KEY:1 CREDIT_CARD:1 EMAIL:2 IP:1 PHONE:1)
 models: gpt-4o:3 gpt-4o-mini-2024-07-18:1 claude-sonnet-4-5:1
 tools: 1 case(s) with tool activity (get_weather:2)
 ```
+
+(That's real output from this exact command — `test/fixtures/sample-traces.json` is the same fixture the test suite and CI's dogfood job run against.) Swap in your own trace export once you've seen the shape of the output.
 
 Input is an OTLP/JSON trace export (`{"resourceSpans":[…]}` — what an OTLP file exporter or `otel-cli` produces), a pre-flattened `{"spans":[…]}` document, or a bare JSON array of spans. Multiple input files merge into one dataset.
 
