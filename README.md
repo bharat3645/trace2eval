@@ -114,6 +114,21 @@ Production traffic repeats itself; eval sets shouldn't. Inputs are canonicalized
 
 Errored spans and spans without captured output are counted, not silently dropped — if 40% of your traces have no recorded completions, that's a telemetry gap you want to know about before trusting the eval set.
 
+## Demo
+
+A real terminal recording against the same committed fixture as the Quick
+Start above: the full extract → scrub → dedupe → coverage → JSONL run,
+then a look at the one case that actually had PII in it (the stable typed
+placeholders in both the input *and* the expected output), then the full
+coverage map:
+
+```bash
+asciinema play demo/trace2eval-demo.cast
+```
+
+(local playback — [install asciinema](https://asciinema.org/docs/installation)
+if you don't have it; no account/upload needed.)
+
 ## CLI reference
 
 ```
