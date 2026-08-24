@@ -8,6 +8,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · versioning: 
 ### Fixed
 - Quick Start's example command pointed at `traces.json`, a file that doesn't exist anywhere in the repo — not runnable as written. Now points at the real, committed `test/fixtures/sample-traces.json` (the same fixture the test suite and CI's dogfood job already exercise), with output re-captured from an actual `node bin/cli.js` run rather than hand-written.
 - Pipeline diagram at the top of the README listed "dedupes" before "scrubs", the reverse of the real order (`lib/convert.js` scrubs each case before deduping) and inconsistent with the README's own later statement that "Scrubbing happens *before* dedupe." Bullet order now matches.
+- Performance table's throughput numbers (~183k/~189k spans/s) didn't reproduce: re-ran `npm run bench` fresh (5 runs at the table's own span counts) and consistently measured ~70-80k spans/s and ~48-52k spans/s instead. Table now carries real numbers from this run plus an explicit hardware-dependent caveat, instead of a stale figure from unknown hardware.
 
 ### Added
 - **Demo recording** (`demo/trace2eval-demo.cast`, linked from the README): a real asciinema terminal session running the exact Quick Start command against the committed fixture, then inspecting the one case with real PII (showing the stable typed placeholders land consistently in both `input` and `expected`), then the full coverage map. Recorded against the real CLI, replayed to confirm before committing.
