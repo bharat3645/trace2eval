@@ -20,10 +20,12 @@ Zero dependencies. Zero network calls. Your traces never leave your machine.
 
 ## Quick start
 
-Try it against the sample OTLP trace committed in this repo — no setup needed, clone and run:
+> **Not yet on npm.** Run it from a checkout — there are no dependencies to
+> install, so this is the whole setup:
 
 ```console
-$ npx trace2eval test/fixtures/sample-traces.json -o eval.jsonl --coverage coverage.json
+$ git clone https://github.com/bharat3645/trace2eval && cd trace2eval
+$ node bin/cli.js test/fixtures/sample-traces.json -o eval.jsonl --coverage coverage.json
 trace2eval v0.1.0 → eval.jsonl
 cases: 5  (from 9 GenAI spans / 10 total; 1 duplicate removed, 1 incomplete, 1 errored skipped)
 scrubbed: 6 PII/secret values in 1 case (API_KEY:1 CREDIT_CARD:1 EMAIL:2 IP:1 PHONE:1)
@@ -132,13 +134,13 @@ if you don't have it; no account/upload needed.)
 ## CLI reference
 
 ```
-trace2eval <trace.json> [more.json ...] [options]
+node bin/cli.js <trace.json> [more.json ...] [options]
 
   -o, --output FILE     write JSONL dataset to FILE (default: stdout)
-  --coverage FILE       write coverage map JSON to FILE
-  --no-scrub            disable PII/secret scrubbing
-  --keep-duplicates     keep duplicate inputs (default: dedupe)
-  --json                print run stats as JSON to stdout (requires -o)
+      --coverage FILE   write coverage map JSON to FILE
+      --no-scrub        disable PII/secret scrubbing
+      --keep-duplicates keep duplicate inputs (default: dedupe)
+      --json            print run stats as JSON to stdout (requires -o)
   -q, --quiet           suppress the summary on stderr
   -v, --version / -h, --help
 
@@ -158,8 +160,10 @@ A day of traces is still a coffee-sip, not a batch job — and the throughput nu
 
 ## Programmatic use
 
+From a checkout (or once this is published to npm and installed as a dependency):
+
 ```js
-import { convert, toJsonl } from 'trace2eval/lib/convert.js';
+import { convert, toJsonl } from './lib/convert.js';
 
 const { cases, coverage } = convert([JSON.parse(rawOtlpJson)], { scrub: true });
 fs.writeFileSync('eval.jsonl', toJsonl(cases));
@@ -167,7 +171,7 @@ fs.writeFileSync('eval.jsonl', toJsonl(cases));
 
 ## Roadmap
 
-LangSmith and Braintrust export formats as first-class inputs; sampling strategies (per-bucket caps, stratified by model/tool); output adapters that emit promptfoo/OpenAI-evals config directly; OTLP protobuf ingestion.
+npm publication (the package is ready — `bin`, `engines` and `files` are set); LangSmith and Braintrust export formats as first-class inputs; sampling strategies (per-bucket caps, stratified by model/tool); output adapters that emit promptfoo/OpenAI-evals config directly; OTLP protobuf ingestion.
 
 ## Related tools
 
